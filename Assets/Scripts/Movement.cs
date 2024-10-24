@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Rigidbody2D rb;
+
 
 public class Movement : MonoBehaviour
 {
@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour
     public float walkingspeed;
     public bool overworld;
     public float basespeed;
-
     public float speedmultiplier;
     // Start is called before the first frame update
     void Start()
