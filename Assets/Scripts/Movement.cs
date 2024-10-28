@@ -10,9 +10,9 @@ public class Movement : MonoBehaviour
     public float yvelocity;
     public float xvelocity;
     public float walkingspeed;
-    public bool overworld;
     public float basespeed;
     public float speedmultiplier;
+    private PlayerController pc;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +22,8 @@ public class Movement : MonoBehaviour
         yvelocity = 0;
         basespeed = 5;
         walkingspeed = 0;
-        overworld = true;
         speedmultiplier = 1;
+        pc = this.gameObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
             walkingspeed = basespeed * speedmultiplier;
         }
         xvelocity = xdirection * walkingspeed;
-        if (overworld == true)
+        if (pc.overworld)
         {
             yvelocity = ydirection * walkingspeed;
         }

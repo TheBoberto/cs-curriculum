@@ -23,6 +23,7 @@ public class EnemyScript : MonoBehaviour
     public bool isattacking;
     private float playerdistance;
     public Animator Walter;
+    public int health;
     enum statelist
     {
         patrol,
@@ -40,6 +41,7 @@ public class EnemyScript : MonoBehaviour
         changestate(statelist.patrol);
         attackcooldown = 0;
         playerdistance = 999;
+        health = 5;
     }
 
     // Update is called once per frame
@@ -196,5 +198,23 @@ public class EnemyScript : MonoBehaviour
             }
             Walter.Play("AttackDown");
         }
+
+    void changehealth(int amount)
+    {
+        health += amount;
+        if (health < 1)
+        {
+            health = 0;
+            changestate(statelist.die);
+        }
     }
+
+    void OnCollisionEnter2D(Collision2D bonk)
+    {
+        if (bonk.gameObject.CompareTag("Player"))
+        {
+            
+        }
+    }
+}
 }
