@@ -6,14 +6,10 @@ public class TurretScript : MonoBehaviour
 {
     private float timer;
     public GameObject bullet;
-    public bool balls;
     // Start is called before the first frame update
     void Start()
     {
         timer = 2;
-        balls = true;
-        if (balls) ;
-
     }
 
     // Update is called once per frame
@@ -26,7 +22,6 @@ public class TurretScript : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                //pop a cap in his ass
                 if (timer <= 0)
                 {
                     GameObject obj = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y,0), new Quaternion(0,0,0,0));

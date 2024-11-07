@@ -3,7 +3,9 @@ guid: 63f52f1c934da4613a15cf68f3b0f562
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animShovel: {fileID: 9100000, guid: 1ccf3beb0c6f246e99cc9a927f1fd12e, type: 2}
+  - animAxe: {fileID: 9100000, guid: 8cf1007ae09a548dfb24a581133c15db, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

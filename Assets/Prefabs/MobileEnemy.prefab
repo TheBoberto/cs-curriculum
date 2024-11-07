@@ -72,7 +72,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.14, y: 0.125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -129,8 +129,12 @@ MonoBehaviour:
   wp2: {fileID: 9185654717517560075}
   wp3: {fileID: 5501293925956785750}
   wp4: {fileID: 4787808218023600008}
+  cl: {fileID: 0}
   isattacking: 0
-  Walter: {fileID: 2864171262592659787}
+  EnemyAnimator: {fileID: 0}
+  health: 3
+  Axe: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac, type: 3}
+  tdac: {fileID: 0}
 --- !u!1 &4787808218023600008
 GameObject:
   m_ObjectHideFlags: 0

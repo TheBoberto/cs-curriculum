@@ -10,13 +10,14 @@ public class GameManager : MonoBehaviour
     private int coins;
     private int health;
     private int maxHealth;
+    public float PlayerAttackAnimTimer;
+    public bool PlayerIsAttacking;
     public TextMeshProUGUI CoinText;
     public TextMeshProUGUI HealthText; 
     void Awake()
     {
         if (gm != null && gm != this) 
         {
-            //commit suicide like a damn loser
             Destroy(this.gameObject);
         }
         else
@@ -69,7 +70,6 @@ public class GameManager : MonoBehaviour
 
     void Die()
     {
-        print("You got cooked loser");
         health = 10;
         maxHealth = 10;
         HealthText.text = "Health: " + health;
@@ -79,13 +79,25 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        
+        PlayerIsAttacking = false;
+        PlayerAttackAnimTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        PlayerAttackAnimTimer -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            PlayerAttackAnimTimer = 1;
+        }
+        if (PlayerAttackAnimTimer > 0)
+        {
+            PlayerIsAttacking = true;
+        }
+        else
+        {
+            PlayerIsAttacking = false;
+        }
     }
-    
 }

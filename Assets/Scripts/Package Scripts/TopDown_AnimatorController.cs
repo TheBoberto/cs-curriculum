@@ -25,7 +25,7 @@ public class TopDown_AnimatorController : MonoBehaviour
         anim.SetBool("IsWalking", false);
         anim.SetInteger("WalkDir", 2);
         sprite.flipX = true;
-
+        IsAttacking = false;
     }
 
     private void Update()

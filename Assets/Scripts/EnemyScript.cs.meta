@@ -3,7 +3,16 @@ guid: 89ab6f384017143ca95214e97d5fbc6b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - wp0: {instanceID: 0}
+  - wp1: {instanceID: 0}
+  - wp2: {instanceID: 0}
+  - wp3: {instanceID: 0}
+  - wp4: {instanceID: 0}
+  - cl: {instanceID: 0}
+  - EnemyAnimator: {instanceID: 0}
+  - Axe: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac, type: 3}
+  - tdac: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

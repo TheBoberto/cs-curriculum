@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
         ydirection = 0;
         xvelocity = 0;
         yvelocity = 0;
-        basespeed = 5;
+        basespeed = 8;
         walkingspeed = 0;
         speedmultiplier = 1;
         pc = this.gameObject.GetComponent<PlayerController>();

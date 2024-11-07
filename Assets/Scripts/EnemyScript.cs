@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
@@ -14,16 +15,20 @@ public class EnemyScript : MonoBehaviour
     public GameObject wp3;
     public GameObject wp4;
     private int targetwp;
+    public GameManager gm;
     private Vector3 targetlocation;
     private bool continuechase;
     private float speed;
     private statelist state;
     private float attacktimer;
     private float attackcooldown;
+    public Collection cl;
     public bool isattacking;
     private float playerdistance;
-    public Animator Walter;
+    public Animator EnemyAnimator;
     public int health;
+    public GameObject Axe;
+    public PlayerController pc;
     enum statelist
     {
         patrol,
@@ -41,7 +46,25 @@ public class EnemyScript : MonoBehaviour
         changestate(statelist.patrol);
         attackcooldown = 0;
         playerdistance = 999;
-        health = 5;
+        health = 3;
+    }
+    
+    void changehealth(int amount)
+    {
+        health += amount;
+        if (health < 1)
+        {
+            health = 0;
+            changestate(statelist.die);
+        }
+    }
+    void OnCollisionEnter2D(Collision2D bonk)
+    {
+        if (bonk.gameObject.CompareTag("Player")) // && gm.PlayerIsAttacking == true)
+        {
+            Debug.Log("Enemy takes damage");
+            changehealth(-1);
+        }
     }
 
     // Update is called once per frame
@@ -89,15 +112,20 @@ public class EnemyScript : MonoBehaviour
             }
             
             Collider2D[] targets2 =
-                Physics2D.OverlapCircleAll(new Vector3(transform.position.x, transform.position.y, 0), 2);
+                Physics2D.OverlapCircleAll(new Vector3(transform.position.x, transform.position.y, 0), 2.5f);
             foreach (var other in targets2)
             {
                 if (other.gameObject.CompareTag("Player") && attackcooldown < 0)
                 {
                     changestate(statelist.attack);
                 }
-
             }
+        }
+        
+        if (state == statelist.die)
+        {
+            Instantiate(Axe, transform.position, quaternion.identity);
+            Destroy(this.gameObject);
         }
         
         if (state == statelist.patrol)
@@ -165,15 +193,18 @@ public class EnemyScript : MonoBehaviour
             speed = 3;
             playerdistance = 999;
         }
+
         if (state == statelist.chase)
         {
             speed = 4.75f;
             playerdistance = 999;
         }
+
         if (state == statelist.die)
         {
             speed = 0;
         }
+
         if (state == statelist.attack)
         {
             attacktimer = 1;
@@ -192,29 +223,13 @@ public class EnemyScript : MonoBehaviour
             {
                 targetlocation = new Vector3(tp.x - 3 * Mathf.Cos(angle), tp.y - 3 * Mathf.Sin(angle));
             }
+
             if (xdif >= 0)
             {
                 targetlocation = new Vector3(tp.x + 3 * Mathf.Cos(angle), tp.y + 3 * Mathf.Sin(angle));
             }
-            Walter.Play("AttackDown");
-        }
 
-    void changehealth(int amount)
-    {
-        health += amount;
-        if (health < 1)
-        {
-            health = 0;
-            changestate(statelist.die);
+            EnemyAnimator.Play("AttackDown");
         }
     }
-
-    void OnCollisionEnter2D(Collision2D bonk)
-    {
-        if (bonk.gameObject.CompareTag("Player"))
-        {
-            
-        }
-    }
-}
 }

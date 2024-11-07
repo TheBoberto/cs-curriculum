@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &26240363 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2864171262592659787, guid: fbdc99957549444bfba281e61d9d218c,
+    type: 3}
+  m_PrefabInstance: {fileID: 630649526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &58140127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40113,6 +40119,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: MobileEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4505701836274323292, guid: fbdc99957549444bfba281e61d9d218c,
+        type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505701836274323292, guid: fbdc99957549444bfba281e61d9d218c,
+        type: 3}
+      propertyPath: isattacking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505701836274323292, guid: fbdc99957549444bfba281e61d9d218c,
+        type: 3}
+      propertyPath: EnemyAnimator
+      value: 
+      objectReference: {fileID: 26240363}
     - target: {fileID: 4668079526467658351, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
       propertyPath: m_LocalPosition.x
